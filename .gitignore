@@ -1,0 +1,13 @@
+node_modules
+/app/styles/app.css
+/.cache
+/build
+/public/build
+.env
+.vercel
+.DS_Store
+/api
+/docker/mysql
+yarn-error.log
+/proxy/vendor
+.idea
