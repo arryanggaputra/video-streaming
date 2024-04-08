@@ -27,7 +27,14 @@ app.get("/", async (req, res) => {
   }
 
   const vidUrl = results[0].url;
-  return got.stream(vidUrl).pipe(res);
+  return got
+    .stream(vidUrl, {
+      headers: {
+        "user-agent":
+          "com.google.android.youtube/19.09.37 (Linux; U; Android 11) gzip",
+      },
+    })
+    .pipe(res);
 });
 
 app.listen(process.env.port || 3000, () =>
