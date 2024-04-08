@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "video-streaming",
+            "script": "npm",
+            "args" : "start"
+        }
+    ]
+}
