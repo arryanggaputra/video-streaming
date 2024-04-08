@@ -30,4 +30,6 @@ app.get("/", async (req, res) => {
   return got.stream(vidUrl).pipe(res);
 });
 
-app.listen(3000, () => console.log("Example app listening on port 3000!"));
+app.listen(process.env.port || 3000, () =>
+  console.log(`Example app listening on port ${process.env.port || 3000}!`)
+);
