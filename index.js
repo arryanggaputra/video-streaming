@@ -37,6 +37,21 @@ app.get("/", async (req, res) => {
     .pipe(res);
 });
 
+app.get("/vimeo", async (req, res) => {
+  const videoId = req.query.id;
+  const [results] = await connection.execute(
+    "SELECT * FROM VimeoVideoLists where id = ? limit 1",
+    [videoId]
+  );
+
+  if (results.length < 1) {
+    return res.send("Not found", 404);
+  }
+
+  const vidUrl = results[0].url;
+  return got.stream(vidUrl).pipe(res);
+});
+
 app.listen(process.env.port || 3000, () =>
   console.log(`Example app listening on port ${process.env.port || 3000}!`)
 );
